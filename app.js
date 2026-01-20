@@ -1,17 +1,18 @@
-import express from 'express'
-const app = express()
+import express from "express";
 
-app.use(express.static('dist'))
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.get('/version', (req, res) => {
-  res.send('1')
-})
+app.use(express.static("dist"));
 
-app.get('/health', (req, res) => {
-  res.send('ok')
-})
+app.get("/version", (req, res) => {
+  res.send("1");
+});
 
-const PORT = process.env.PORT || 5000
+app.get("/health", (req, res) => {
+  res.send("ok");
+});
+
 app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`)
-})
+  console.log(`server started on port ${PORT}`);
+});
