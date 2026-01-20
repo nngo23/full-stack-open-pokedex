@@ -1,5 +1,6 @@
 {
   "name": "fullstackopen-cicd",
+  "type": "module",
   "version": "1.0.0",
   "description": "Full Stack Open",
   "main": "src/index.js",
@@ -8,7 +9,8 @@
     "start-prod": "node app.js",
     "test": "jest",
     "eslint": "eslint .",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "e2e-test": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -24,18 +26,19 @@
   },
   "homepage": "https://github.com/smartlyio/fullstackopen-cicd#readme",
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-jest": "^27.9.0",
     "@babel/core": "^7.23.7",
     "@babel/plugin-transform-runtime": "^7.23.7",
     "@babel/preset-env": "^7.23.7",
     "@babel/preset-react": "^7.23.3",
-    "@testing-library/jest-dom": "^6.2.0",
+    "@playwright/test": "1.34",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^14.1.2",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-react": "^7.37.5",
     "globals": "^17.0.0",
     "history": "^5.3.0",
     "html-loader": "^4.2.0",
@@ -55,6 +58,9 @@
     "react-router-dom": "^6.21.1"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "e2e-tests"
+    ]
   }
 }
