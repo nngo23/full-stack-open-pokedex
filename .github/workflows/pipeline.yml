@@ -36,6 +36,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+
       - name: e2e tests
         run: npx playwright test
 
