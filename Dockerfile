@@ -8,10 +8,8 @@ COPY package*.json ./
 
 RUN npm install --omit=dev
 
-COPY dist ./dist
 COPY app.js .
-COPY controllers ./controllers
-COPY utils ./utils
+COPY dist ./dist
 
 EXPOSE 5000
 
