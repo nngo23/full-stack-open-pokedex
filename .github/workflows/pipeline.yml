@@ -77,7 +77,9 @@ jobs:
               {
                 "title": "A new version of **Pokedex** was deployed successfully",
                 "description": "to https://pokedex.fly.dev\n by ${{ github.actor }}",
-                "footer": "Severity: informational",
+                "footer": {
+                  "text": "Severity: informational"
+                },
                 "color": 3066993
               }
             ]
@@ -97,7 +99,9 @@ jobs:
               {
                 "title": "Build failed",
                 "description": "commit **${{ github.sha }}** by **${{ github.actor }}** failed to deploy to Fly.io.",
-                "footer": "Severity: error",
+                "footer": {
+                  "text": "Severity: error"
+                },
                 "color": 15158332
               }
             ]
