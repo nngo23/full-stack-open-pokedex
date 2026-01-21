@@ -76,7 +76,7 @@ jobs:
             "embeds": [
               {
                 "title": "A new version of **Pokedex** was deployed successfully",
-                "description": "to https://pokedex.fly.dev\n by ${{ github.actor }}",
+                "description": "to https://pokedex-new.fly.dev\n by ${{ github.actor }}",
                 "footer": {
                   "text": "Severity: informational"
                 },
