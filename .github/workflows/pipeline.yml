@@ -66,9 +66,17 @@ jobs:
           !contains(join(github.event.commits.*.message, ' '), '#skip')
         run: |
           curl -X POST \
-            -H "Content-Type: application/json" \
-            -d "{\"content\":\"A new version of Pokedex deployed successfully!\nhttps://pokedex.fly.dev\ndeployed by: ${{ github.actor }}\"}" \
-            ${{ secrets.DISCORD_WEBHOOK_URL }}
+          -H "Content-Type: application/json" \
+          -d '{
+            "embeds": [
+              {
+                "title": "A new version of **Pokedex** was deployed successfully",
+                "description": "to https://pokedex.fly.dev\n by ${{ github.actor }}",
+                "color": 3066993
+              }
+            ]
+          }' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: Discord alert on failed deployment
         if: >
@@ -77,9 +85,17 @@ jobs:
           !contains(join(github.event.commits.*.message, ' '), '#skip')
         run: |
           curl -X POST \
-            -H "Content-Type: application/json" \
-            -d "{\"content\":\" Deployment failed\nCommit: ${{ github.sha }}\nAuthor: ${{ github.actor }}\"}" \
-            ${{ secrets.DISCORD_WEBHOOK_URL }}
+          -H "Content-Type: application/json" \
+          -d '{
+            "embeds": [
+              {
+                "title": "Build failed",
+                "description": "commit **${{ github.sha }}** by **${{ github.actor }}** failed to deploy to Fly.io.",
+                "color": 15158332
+              }
+            ]
+          }' \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
 
   tag_release:
     needs: [simple_deployment_pipeline]
