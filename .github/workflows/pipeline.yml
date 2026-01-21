@@ -64,6 +64,27 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
+      - name: Discord alert on successful deployment
+        uses: rjstone/discord-webhook-notify@v2
+        if: success()
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          username: "GitHub Bot"
+          details: |
+            A new version of Pokedex deployed successfully!
+            to URL: https://pokedex.fly.dev by ${{ github.actor }}
+          severity: informational
+
+      - name: Discord alert on failed deployment
+        uses: rjstone/discord-webhook-notify@v2
+        if: failure()
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          content: |
+            commit ${{ github.sha }} by ${{ github.actor }} failed to deploy to Fly.io
+          username: "GitHub Bot"
+          severity: error
+
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
