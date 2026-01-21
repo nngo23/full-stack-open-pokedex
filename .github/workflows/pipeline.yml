@@ -73,7 +73,7 @@ jobs:
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: "GitHub Bot"
-          details: |
+          content: |
             A new version of Pokedex deployed successfully!
             to https://pokedex.fly.dev by ${{ github.actor }}
           severity: informational
