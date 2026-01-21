@@ -5,15 +5,15 @@ on:
     branches:
       - main
 
+  # Schedule is removed to avoid unnecessary GitHub Actions usage
+
 jobs:
   health_check:
     runs-on: ubuntu-latest
     steps:
       - name: perform HTTP request to deployed app
         run: |
-          echo "Pinging deployed app..."
-
-          CODE=$(curl -s -L -o /dev/null -w "%{http_code}" https://pokedex.fly.dev/this-route-does-not-exist)
+          CODE=$(curl -s -L -o /dev/null -w "%{http_code}" https://pokedex-new.fly.dev)
 
           echo "Returned status code: $CODE"
 
