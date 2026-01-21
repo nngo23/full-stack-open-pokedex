@@ -11,7 +11,6 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
-
     steps:
       - name: Run actions/checkout@v4
         uses: actions/checkout@v4
@@ -33,7 +32,7 @@ jobs:
       - name: test
         run: npm test
 
-      - name: Setup Node.js 18 for Playwright
+      - name: setup Node.js 18 for Playwright
         uses: actions/setup-node@v5
         with:
           node-version: 18
