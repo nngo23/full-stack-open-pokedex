@@ -72,7 +72,7 @@ jobs:
           username: "GitHub Bot"
           details: |
             A new version of Pokedex deployed successfully!
-            to URL: https://pokedex.fly.dev by ${{ github.actor }}
+            to https://pokedex.fly.dev by ${{ github.actor }}
           severity: informational
 
       - name: Discord alert on failed deployment
