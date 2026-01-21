@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "Pinging deployed app..."
 
-          CODE=$(curl -s -L -o /dev/null -w "%{http_code}" https://pokedex.fly.dev/)
+          CODE=$(curl -s -L -o /dev/null -w "%{http_code}" https://pokedex.fly.dev/this-route-does-not-exist)
 
           echo "Returned status code: $CODE"
 
