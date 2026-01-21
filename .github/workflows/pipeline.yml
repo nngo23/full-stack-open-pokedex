@@ -57,7 +57,12 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy to Fly.io
-        run: exit 1
+        if: >
+          github.event_name == 'push' &&
+          !contains(join(github.event.commits.*.message, ' '), '#skip')
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
       - name: Discord alert on successful deployment
         if: >
